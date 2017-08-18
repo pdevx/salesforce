@@ -1,0 +1,139 @@
+.site-bold {
+    font-weight: bold;
+}
+
+.site-blue {
+    background-color: #106cc8 !important;
+    color: #106cc8 !important;
+    fill: #106cc8 !important;
+}
+
+.site-blue .md-bar {
+    background-color: #106cc8 !important;
+}
+
+.site-grey {
+    background-color: #424242 !important;
+    color: #424242 !important;
+    fill: #424242 !important;
+}
+
+.site-absolute-button {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+.site-toolbar {
+    padding: 0 1em;
+}
+
+.site-main-toolbar {
+    background: #f6f6f6 !important;
+    color: #424242 !important;
+    padding: 0 1em;
+}
+
+.site-image-width {
+    width: 150px !important;
+}
+
+.site-main {
+    padding: 1em;
+}
+
+.site-center {
+    text-align: center;
+}
+
+.site-no-margin {
+    margin: 0 !important;
+}
+
+.site-no-margin-left {
+    margin-left: 0px !important;
+}
+
+.site-no-margin-right {
+    margin-right: 0px !important;
+}
+
+.site-no-margin-top {
+    margin-top: 0px !important;
+}
+
+.site-no-margin-bottom {
+    margin-bottom: 0px !important;
+}
+
+.site-no-pad {
+    padding: 0 !important;
+}
+
+.site-no-pad-left {
+    padding-left: 0 !important;
+}
+
+.site-no-pad-right {
+    padding-right: 0 !important;
+}
+
+.site-no-pad-top {
+    padding-top: 0 !important;
+}
+
+.site-no-pad-bottom {
+    padding-bottom: 0 !important;
+}
+
+.site-pad {
+    padding: 20px;
+}
+
+.site-pad-left {
+    padding-left: 20px;
+}
+
+.site-pad-left-x2 {
+    padding-left: 40px;
+}
+
+.site-pad-left-sm {
+    padding-left: 10px;
+}
+
+.site-pad-right {
+    padding-right: 20px;
+}
+
+.site-pad-right-x2 {
+    padding-right: 40px;
+}
+
+.site-pad-right-sm {
+    padding-right: 10px;
+}
+
+.site-pad-top {
+    padding-top: 20px;
+}
+
+.site-pad-top-x2 {
+    padding-top: 40px;
+}
+
+.site-pad-top-sm {
+    padding-top: 10px;
+}
+
+.site-pad-bottom {
+    padding-bottom: 20px;
+}
+
+.site-pad-bottom-x2 {
+    padding-bottom: 40px;
+}
+
+.site-pad-bottom-sm {
+    padding-bottom: 10px;
+}

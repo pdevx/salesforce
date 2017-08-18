@@ -1,0 +1,11 @@
+<div layout="row" layout-align="center center" flex="100">
+    <div class="md-whiteframe-z2" flex-xs="100" flex="50">
+        <md-content class="site-pad-left site-pad-right" flex="" layout="column" layout-padding="">
+            <div layout="row" layout-align="center center">{{ "FILE_INSTRUCTIONS" | translate }}</div>
+            <lf-ng-md-file-input lf-files="vm.file"></lf-ng-md-file-input>
+            <div layout="row" layout-align="center center">
+                <md-button class="md-primary md-raised" md-theme="buttons" ng-click="vm.sendFile()">{{ "GO" | translate }}</md-button>
+            </div>
+        </md-content>
+    </div>
+</div>
