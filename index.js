@@ -44,7 +44,7 @@ function handleCommand(line, wstream) {
         if (i === 0) {
           curDir = navArray[i].name;
         } else {
-          curDir = curDir + '\\' + navArray[i].name;
+          curDir = navArray[i].name + '\\' + curDir;
         }
       }
       var dirString = "Directory of " + curDir + ":\n";
