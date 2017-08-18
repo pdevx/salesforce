@@ -3,6 +3,8 @@ var filebrowseController = angular.module('filebrowse.controller', []);
 filebrowseController.controller('filebrowseController', function ($http, $q, $filter, filebrowseService) {
     var vm = {};
 
+    vm.complete = false;
+
     function sendThatFile() {
         var deferred = $q.defer();
         // var file = vm.file[0].lfFile;
@@ -20,9 +22,10 @@ filebrowseController.controller('filebrowseController', function ($http, $q, $fi
     };
 
     vm.sendFile = function () {
-        // console.log(vm.file[0]);
+        vm.complete = false;
         sendThatFile().then(function success(data) {
             console.log(data);
+            vm.complete = true;
         }, function error(err) {
             console.log(err);
         });

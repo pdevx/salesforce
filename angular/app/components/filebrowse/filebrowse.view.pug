@@ -1,8 +1,10 @@
 div(layout="row", layout-align="center center", flex="100")
     .md-whiteframe-z2(flex-xs="100", flex="50")
         md-content.site-pad-left.site-pad-right(flex="", layout="column", layout-padding="")
-            div(layout="row", layout-align="center center")
-                | {{ "FILE_INSTRUCTIONS" | translate }}
-            lf-ng-md-file-input(lf-files='vm.file')
+            //- div(layout="row", layout-align="center center")
+            //-     | {{ "FILE_INSTRUCTIONS" | translate }}
+            //- lf-ng-md-file-input(lf-files='vm.file')
             div(layout="row", layout-align="center center")
                 md-button.md-primary.md-raised(md-theme="buttons", ng-click="vm.sendFile()") {{ "GO" | translate }}
+            div(layout="row", layout-align="center center", ng-show="vm.complete")
+                | {{ "FILE_RESULTS" | translate }}

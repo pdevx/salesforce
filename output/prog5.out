@@ -1,0 +1,32 @@
+Start----->
+Command: dir
+Directory of root:
+No subdirectories
+Command: mkdir   sub6
+Command: mkdir   sub3
+Command: mkdir   sub4
+Command: dir
+Directory of root:
+sub6,sub3,sub4
+Command: mkdir   sub4
+Command: cd      sub3
+Command: cd      sub3
+Command: mkdir   sub3
+Command: mkdir   sub6
+Command: mkdir   sub4
+Command: dir
+Directory of sub3\root:
+sub3,sub6,sub4
+Command: cd      sub6
+Command: mkdir   sub666
+Command: dir
+Directory of sub6\sub3\root:
+sub666
+Command: up
+Command: up
+Command: dir
+Directory of root:
+sub6,sub3,sub4
+Command: up
+Cannot move up from root directory
+End------->
