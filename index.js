@@ -8,15 +8,17 @@ var https = require('https');
 var app = express();
 var bodyParser = require('body-parser');
 
+// initial directory structure with just the root
 var directories = {
   root: {}
 };
-
+// An array for tracking where we are in the directory tree, position 0 is the current directory with parent folders stored in sequence after.
 var navArray = [{
   name: "root",
-  dirs: directories.root
+  dirs: directories.root // a reference to the location of child directories in the directories object.
 }];
 
+// Convert each line from the linereader into an array of values
 function convertLineToArray(line, wstream) {
   var tempArray = line.split(" ");
   var lineArray = [];
@@ -28,6 +30,7 @@ function convertLineToArray(line, wstream) {
   return lineArray;
 };
 
+// Handle each command as they are streamed from the input file
 function handleCommand(line, wstream) {
   var lineArray = convertLineToArray(line);
   wstream.write('Command: ' + line + '\n');
@@ -36,6 +39,7 @@ function handleCommand(line, wstream) {
     case 'dir':
       // Display the path and the subdirectories of the current default directory, the latter in lexicographic order.
       var curDir = "";
+      // Piece together a properly formatted string for the current directory.
       for (var i = 0; i < navArray.length; i++) {
         if (i === 0) {
           curDir = navArray[i].name;
@@ -44,11 +48,17 @@ function handleCommand(line, wstream) {
         }
       }
       var dirString = "Directory of " + curDir + ":\n";
+      // Piece together the string for subdirectories.
       var subDirs = Object.keys(navArray[0].dirs);
       if (subDirs.length === 0) {
         dirString = dirString + "No subdirectories";
       } else {
-        dirString = dirString + subDirs.toString();
+        var subDirString = "";
+        subDirs = subDirs.sort()
+        for(var ii = 0; ii < subDirs.length;ii++){
+          subDirString = subDirString + subDirs[ii] + '\t';
+        }
+        dirString = dirString + subDirString;
       }
       wstream.write(dirString + '\n');
       break;
@@ -63,12 +73,14 @@ function handleCommand(line, wstream) {
       console.log(lineArray);
       var subDirs = Object.keys(navArray[0].dirs);
       var isMatch = false;
+      // Make sure the requested directory exists in the subdirectories.
       for (var i = 0; i < subDirs.length; i++) {
         if (subDirs[i] === lineArray[1]) {
           isMatch = true;
         }
       }
       if (isMatch) {
+        // Create a navObj to track directory navigation and put it at position 0 in the navArray.
         var navObj = {
           name: lineArray[1],
           dirs: navArray[0].dirs[lineArray[1]]
@@ -80,8 +92,8 @@ function handleCommand(line, wstream) {
       break;
     case 'up':
       // Change the default to the parent directory of the current default directory.
-      console.log(lineArray);
       if (navArray.length > 1) {
+        // Just move the parent to position 0 and drop the current directory.
         navArray.shift();
       } else {
         wstream.write("Cannot move up from root directory\n");
@@ -106,9 +118,11 @@ app.get('/', function (req, res) {
 
 // API
 app.post('/sendFile', function (req, res) {
+  // Create a file to write to.
   var wstream = fs.createWriteStream('output/prog5.out');
   wstream.write('Start----->\n');
 
+  // Read the input file line by line.
   var lineReader = rl.createInterface({
     input: fs.createReadStream('input/prog5.dat')
   });
@@ -117,6 +131,7 @@ app.post('/sendFile', function (req, res) {
     handleCommand(line, wstream);
   });
 
+  // I think we're done here.
   lineReader.on('close', function () {
     console.log("We done");
     wstream.write('End------->\n');
